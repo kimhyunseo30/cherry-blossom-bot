@@ -47,6 +47,7 @@ def get_ai_response(question):
     config= types.GenerateContentConfig(
     max_output_tokens=10000,
     response_mime_type='text/plain',
+    temperature=0.5,
     system_instruction = f"""
     당신은 2026년 벚꽃 개화 시기를 안내하는 전문 챗봇 ' 벗꽃 모니터' 입니다.
     [참조 데이터 ({data_type})]
@@ -60,7 +61,8 @@ def get_ai_response(question):
     """
     )
     response= client.models.generate_content(
-        model="gemini-2.5-flash",
+        #model="gemini-2.5-flash",
+        model='gemini-2.0-flash',
         contents=question,
         config=config
         )
